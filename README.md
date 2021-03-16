@@ -14,6 +14,8 @@ Make your own IoT project with Web App !
 
 [More Documents on gitbook](https://doc.sgiot.com.tw)
 
+<img src="./img/gif/ServoDemo.gif" alt="drawing" width="300"/>
+
 ## Features
 
 - **Create your own styled web**.

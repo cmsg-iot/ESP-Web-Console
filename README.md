@@ -46,12 +46,12 @@ For other modules you can use the core and upload web files.
 
 |        Firmware        |     Module      | Memory address |               Description                |
 | :--------------------: | :-------------: | :------------: | :--------------------------------------: |
-| ESPWC_Main_Simple.bin  |     ESP-01S     |    0x00000     |        Simple Web UI + ESPWC_Main        |
-| ESPWC_Main_Custom.bin  |     ESP-01S     |    0x00000     |        Custom Web UI +ESPWC_Main         |
-| ESPWC_Servo_Simple.bin |     ESP-01S     |    0x00000     |       Simple Web UI + ESPWC_Servo        |
-| ESPWC_Servo_Custom.bin |     ESP-01S     |    0x00000     |        Custom Web UI +ESPWC_Servo        |
-| core / ESPWC_Main.bin  | ESP-01 ~ ESP-14 |    0x00000     |        Config for ESP8266, active        |
-| core / ESPWC_Servo.bin | ESP-01 ~ ESP-14 |    0x00000     | Control Servomotors, basic on ESPWC_Main |
+| [ESPWC_Main_Simple.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Main_Simple.bin?raw=true)  |     ESP-01S     |    0x00000     |        Simple Web UI + ESPWC_Main        |
+| [ESPWC_Main_Custom.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Main_Custom.bin?raw=true)  |     ESP-01S     |    0x00000     |        Custom Web UI +ESPWC_Main         |
+| [ESPWC_Servo_Simple.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Servo_Simple.bin?raw=true) |     ESP-01S     |    0x00000     |       Simple Web UI + ESPWC_Servo        |
+| [ESPWC_Servo_Custom.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Servo_Custom.bin?raw=true) |     ESP-01S     |    0x00000     |        Custom Web UI +ESPWC_Servo        |
+| core / [ESPWC_Main.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/core/ESPWC_Main.bin?raw=true)  | ESP-01 ~ ESP-14 |    0x00000     |        Config for ESP8266, active        |
+| core / [ESPWC_Servo.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/core/ESPWC_Servo.bin?raw=true) | ESP-01 ~ ESP-14 |    0x00000     | Control Servomotors, basic on ESPWC_Main |
 
 > Note: make sure of your Module's FS size are enough.
 

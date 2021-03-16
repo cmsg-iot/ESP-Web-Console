@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>README.md</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+	<style>
+		body {
+			font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+				Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+				"Segoe UI Symbol", "Noto Color Emoji";
+			padding: 0 26px;
+			line-height: 22px;
+			word-wrap: break-word;
+		}
+
+		h1 {
+			padding-bottom: 0.3em;
+			line-height: 1.2;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+		}
+
+		h1,
+		h2 {
+			font-weight: bolder;
+			padding: 10px 0px 10px 0px;
+		}
+
+		h3 {
+			font-weight: bolder;
+		}
+
+		table {
+			margin: auto;
+			border-collapse: collapse;
+		}
+
+		table>thead>tr>th {
+			text-align: left;
+			border-bottom: 1px solid;
+		}
+
+		table>thead>tr>th,
+		table>thead>tr>td,
+		table>tbody>tr>th,
+		table>tbody>tr>td {
+			padding: 20px 25px;
+			border: 0.5px solid #cccccc;
+			font-size: 16px;
+		}
+
+		table>tbody>tr:nth-child(even) {
+			background: rgb(222, 227, 255)
+		}
+
+		table>tbody>tr:nth-child(odd) {
+			background: #FFF
+		}
+
+		li {
+			padding: 10px 0px 10px 0px;
+			font-size: 16px;
+		}
+
+		p {
+			padding: 10px 0px 10px 0px;
+			font-size: 16px;
+		}
+
+		.t {
+			text-align: center
+		}
+	</style>
+</head>
+
+<body>
+	<h1 id="esp-web-console">ESP Web Console</h1>
+	<p><a href="https://doc.sgiot.com.tw">More Documents on gitbook</a></p>
+	<h2 id="features">Features</h2>
+	<ul>
+		<li><strong>Create your own styled web</strong>.</li>
+		<li><strong>Baud setting</strong> on the web.</li>
+		<li>Max connection of 3~4 devices on the same time.</li>
+		<li>Use <strong>WebSocket</strong> to control instead of AT-command.</li>
+		<li>Provide <strong>AP/AP+STA WiFi Mode</strong>, free to switch standalone/internet usage.</li>
+		<li><strong>Actively send data</strong> to taget server.</li>
+		<li><strong>RealTime transfer data</strong> with serial port(TX/RX) between ESP8266 and other device like
+			Arduino.</li>
+	</ul>
+	<h2 id="restriction">Restriction</h2>
+	<p>These problem will be optimized in the future!</p>
+	<ul>
+		<li>Recommend File size of each static files(js,css,html...) after gzip are &lt;7KB.</li>
+		<li>Too much js files import on the same time are not recommend.</li>
+		<li>Too fast input command will lost sometimes.</li>
+		<li>In AP+STA Mode, if the target server not response, the connection will be unstabled.</li>
+		<li>Not allowed local network to access ESP8266.</li>
+	</ul>
+	<h2 id="feature">Feature</h2>
+	<h3 id="status">status</h3>
+	<table>
+		<thead>
+			<tr>
+				<th class="t">Name</th>
+				<th class="t">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="t">Device Name</td>
+				<td class="t">Name of this ESP8266</td>
+			</tr>
+			<tr>
+				<td class="t">AP Connect</td>
+				<td class="t">Result of Connected WiFi(Default are standalone)</td>
+			</tr>
+			<tr>
+				<td class="t">WiFi Quality</td>
+				<td class="t">show RSSI of WiFi</td>
+			</tr>
+			<tr>
+				<td class="t">OP Time</td>
+				<td class="t">Counter of ESP8266 if not restart</td>
+			</tr>
+			<tr>
+				<td class="t">Uart Baudrate(bps)</td>
+				<td class="t">Baud of ESP8266</td>
+			</tr>
+		</tbody>
+	</table>
+	<h3 id="button">button</h3>
+	<table>
+		<thead>
+			<tr>
+				<th class="t">Name</th>
+				<th class="t">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="t">Scan AP</td>
+				<td class="t">send <strong>@AP scan</strong> command</td>
+			</tr>
+			<tr>
+				<td class="t">xxx bps</td>
+				<td class="t">send <strong>@bps: xxx</strong> command</td>
+			</tr>
+			<tr>
+				<td class="t">Send</td>
+				<td class="t">send input message as command</td>
+			</tr>
+			<tr>
+				<td class="t">clear msg</td>
+				<td class="t">clear textarea output</td>
+			</tr>
+			<tr>
+				<td class="t">EEPROM</td>
+				<td class="t">show EEPROM of ESP8266 in textarea</td>
+			</tr>
+		</tbody>
+	</table>
+	<h2 id="command">Command</h2>
+	<h3 id="common">Common</h3>
+	<table>
+		<thead>
+			<tr>
+				<th class="t">Description</th>
+				<th class="t">Command</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="t">self AP setting</td>
+				<td class="t">@set SAP
+					[<strong><code>SSID</code></strong>]:[<strong><code>PASSWORD</code></strong>]</td>
+			</tr>
+			<tr>
+				<td class="t">scan WiFi</td>
+				<td class="t">@AP scan</td>
+			</tr>
+			<tr>
+				<td class="t">connect WiFi</td>
+				<td class="t">@AP connect
+					[<strong><code>SSID</code></strong>]:[<strong><code>PASSWORD</code></strong>]</td>
+			</tr>
+			<tr>
+				<td class="t">set TCP data receive address</td>
+				<td class="t">@set recv
+					IP:<strong><code>DOMAIN/IP</code></strong>:<strong><code>PORT</code></strong></td>
+			</tr>
+			<tr>
+				<td class="t">baud setting</td>
+				<td class="t">@bps:<strong><code>baud</code></strong></td>
+			</tr>
+			<tr>
+				<td class="t">send serial data to external device</td>
+				<td class="t">VM&lt;<strong><code>MESSAGE</code></strong></td>
+			</tr>
+		</tbody>
+	</table>
+	<blockquote>
+		<p>@Command : system setting for ESP8266.</p>
+	</blockquote>
+	<h3 id="servomotors">ServoMotors</h3>
+	<table>
+		<thead>
+			<tr>
+				<th class="t">Description</th>
+				<th class="t">Command</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="t">set servo motor's angle</td>
+				<td class="t">pose set <strong><code>Channel of
+							PCA9685</code></strong>:<strong><code>Angle</code></strong></td>
+			</tr>
+		</tbody>
+	</table>
+	<blockquote>
+		<p>set multiple motors at the same time - pose set 1:90 2:90 3:90...</p>
+	</blockquote>
+	<h2 id="data-exchange">Data Exchange</h2>
+	<ul>
+		<li>JSON</li>
+	</ul>
+	<h2 id="document">Document</h2>
+	<ul>
+		<li><a href="https://doc.sgiot.com.tw">More Documents on gitbook</a></li>
+	</ul>
+	<h2 id="other-solutions">Other solutions</h2>
+	<ul>
+		<li>Local/Cloud data storage.</li>
+		<li>Data Visualize.</li>
+		<li>Standalone control by time,rules.</li>
+		<li>Line Notify.</li>
+		<li>Remote Control from local/cloud server.(In Development)</li>
+		<li>Other integrated solutions.</li>
+	</ul>
+	<h2 id="reference">Reference</h2>
+	<h3 id="tools">Tools</h3>
+	<ul>
+		<li><a href="https://github.com/esp8266/arduino-esp8266fs-plugin">Arduino ESP8266 filesystem upload</a></li>
+		<li><a href="https://github.com/espressif/esptool">esptool.py</a></li>
+	</ul>
+	<h3 id="custom-web">Custom Web</h3>
+	<ul>
+		<li><a href="https://webpack.js.org/">webpack</a></li>
+	</ul>
+	<h4 id="the-websocket-of-firmware-are-followed-rfc6455">The WebSocket of Firmware are followed <a
+			href="https://tools.ietf.org/html/rfc6455">RFC6455</a></h4>
+	<h2 id="contact-us">Contact us</h2>
+	<p>if you have any question or requirement, welcom to send us a mail !</p>
+	<p><a href="mailto:service@sgiot.com.tw">service@sgiot.com.tw</a></p>
+	<h2 id="license">License</h2>
+	<p><a href="https://github.com/cmsg-iot/ESP-Web-Console/blob/main/LICENSE">MIT</a></p>
+
+</body>
+
+</html>

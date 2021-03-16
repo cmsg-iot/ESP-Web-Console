@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset='utf-8'>
+	<title>ESPWebConsole</title>
+
+	<style type="text/css">
+		* {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+		}
+
+		.container {
+			display: grid;
+			grid-template-areas:
+				"term term term main main main"
+				"term term term main main main"
+			;
+			padding: 20px;
+		}
+
+		.main {
+			grid-area: main;
+			display: table;
+			/* margin: auto; */
+			margin-left: auto;
+			margin-top: 3em;
+		}
+
+		.main th {
+			font-size: 36px;
+			padding: 10px 30px 10px 30px;
+		}
+
+		.main td {
+			font-size: 24px;
+			text-align: center;
+			width: 300px;
+			height: 60px;
+			padding: 10px 30px 10px 30px;
+		}
+
+		.main input {
+			font-size: 24px;
+			padding: 20px;
+		}
+
+		.main select {
+			font-size: 24px;
+			padding: 10px;
+		}
+
+		.term {
+			grid-area: term;
+			margin-top: 3em;
+			text-align: center;
+		}
+
+		.term td {
+			font-size: 26px;
+
+		}
+
+		.term input {
+			font-size: 20px;
+		}
+
+		.term input[type="text"] {
+			border: 1px solid black;
+		}
+
+		caption {
+			font-size: 36px;
+			font-weight: bold;
+			margin-bottom: 1em;
+		}
+
+		textarea {
+			resize: none;
+			outline: none;
+			overflow-y: scroll;
+			width: 65vw;
+			height: 70vh;
+			font-size: 28px;
+		}
+
+		.logo {
+			font-weight: bolder;
+			font-size: 50px;
+			text-align: center;
+			margin-bottom: 0.5em;
+		}
+
+		.logo div {
+			margin: auto;
+			border: 3px solid black;
+			width: 35%;
+		}
+
+		@media screen and (max-width: 1024px) {
+			.container {
+				grid-template-areas:
+					"main main main main main main"
+					"term term term term term term"
+				;
+			}
+
+			.main {
+				margin: auto;
+				height: 50%;
+			}
+
+			.main th {
+				font-size: 50px;
+			}
+
+			.main td {
+				font-size: 40px;
+				width: 300px;
+				height: 120px;
+			}
+
+			.main input {
+				font-size: 36px;
+			}
+
+			.main select {
+				font-size: 30px;
+			}
+
+			.term {
+				margin: auto;
+				margin-top: 3em;
+				margin-bottom: 2em;
+			}
+
+			.term td {
+				font-size: 36px;
+			}
+
+			.term input {
+				font-size: 30px;
+			}
+
+			caption {
+				font-size: 50px;
+			}
+
+			textarea {
+				width: 80vw;
+				height: 40vh;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="logo">ESPWebConsole <div></div>
+	</div>
+
+	<div class="container">
+		<div class="main">
+			<table>
+				<th colspan="2">Device Name</th>
+				<tr>
+					<td colspan="2" id="device">----</td>
+				</tr>
+				<th>WiFi Quality</th>
+				<th>OP time</th>
+				<tr>
+					<td id="RSSI">----</td>
+					<td id="LT">----</td>
+				</tr>
+				<th>AP Connect</th>
+				<th>Baud</th>
+				<tr>
+					<td id="wifi">----</td>
+					<td id="baud">9600</td>
+				</tr>
+			</table>
+			<div style="border: 1px solid black; width: 90%;margin: auto;"></div>
+			<table>
+
+				<th>User Func</th>
+				<th>System Func</th>
+				<tr>
+					<td><select id="bps" onchange="baudSet(this.value)">
+							<option disabled selected>baud setting</option>
+							<option value="300">baud: 300</option>
+							<option value="1200">baud: 1200</option>
+							<option value="2400">baud: 2400</option>
+							<option value="4800">baud: 4800</option>
+							<option value="9600">baud: 9600</option>
+							<option value="19200">baud: 19200</option>
+							<option value="38400">baud: 38400</option>
+							<option value="74880">baud: 74880</option>
+							<option value="115200">baud: 115200</option>
+							<option value="230400">baud: 230400</option>
+							<option value="250000">baud: 250000</option>
+							<option value="500000">baud: 500000</option>
+							<option value="1000000">baud: 1000000</option>
+							<option value="2000000">baud: 2000000</option>
+						</select></td>
+					<td><input type="button" value="Clear msg" onclick="$('tx').value=''"></td>
+				</tr>
+				<tr>
+					<td><input type="button" value="AP scan" onclick="postCmd('@AP scan')"></td>
+				</tr>
+				<tr>
+					<td>
+						<input type="button" value="EEPROM" onclick="postCmd('rab get EEPROM')">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="term">
+			<div></div>
+
+			<table>
+				<caption>Terminal</caption>
+				<tr>
+					<td>CMD>> <input type="text" id="WSSCMD"><input type="button" value="Send"
+							onclick="execCmd('WSSCMD')"></td>
+				</tr>
+				<tr>
+					<td><textarea id="tx" cols="160" rows="10" disabled readonly></textarea></td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+	<script src='./func.js'></script>
+	<script src='./index.js'></script>
+	<script>
+		setTimeout('connect()', 1000);
+	</script>
+</body>
+
+</html>

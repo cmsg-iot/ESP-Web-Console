@@ -4,11 +4,9 @@ ESP Web Console is **simple**, **standalone**, **customizable web**, **realtime 
 
 In this demo we use **ESP-01S**, but the firmware of core can be use on ESP8266 series.
 
-This firmware is mainly for someone who want to
+This firmware is mainly for someone who want to upgrade your device(Arduino) with ESP8266, Control and Monitor everything on the Web !
 
-Upgrade your device(Arduino) with ESP8266, Control and Monitor everything on the Web !
-
-Make your own IoT project with Web App !
+Make your own IoT project with Web App, and share your ideas to everyone on the gitter!
 
 <!-- [Quik Demo](https://youtube.com) -->
 
@@ -69,7 +67,7 @@ esptools.py --port <Serial Port> erase_flash
 ### Basic(For ESP-01S)
 
 ```bash
-esptools.py --port <Serial Port> write_flash 0x0 ESPWebConsole_Main_Simple.bin
+esptools.py --port <Serial Port> write_flash 0x0 ESPWC_Main_Simple.bin
 ```
 
 ---
@@ -77,7 +75,7 @@ esptools.py --port <Serial Port> write_flash 0x0 ESPWebConsole_Main_Simple.bin
 ### Core
 
 ```bash
-esptools.py --port <Serial Port> write_flash 0x00000 WebConsole.bin
+esptools.py --port <Serial Port> write_flash 0x00000 ESPWC_Main.bin
 ```
 
 ### Web
@@ -131,7 +129,7 @@ see [document](https://doc.sgiot.com.tw/webconsole/installation/upload-web)
 
 ## How to use?
 
-### simple usage(WebConsole_Demo)
+### simple usage(ESPWC_Main_Simple)
 
 - Connect ESP8266 to computer, open **Arduino IDE > Tools > Serial Monitor**, you'll see output like this.
 
@@ -225,7 +223,7 @@ See document in [here](https://doc.sgiot.com.tw/webconsole/manual/custom-usage-s
 
 ## Contact us
 
-if you have any question or requirement, welcom to send us a mail !
+if you have any questions or requirements, welcom to send us a mail !
 
 [service@sgiot.com.tw](mailto:service@sgiot.com.tw)
 

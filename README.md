@@ -1,5 +1,7 @@
 # ESP Web Console
 
+[![Join the chat at https://gitter.im/ESP-Web-Console/Hall](https://badges.gitter.im/ESP-Web-Console/Hall.svg)](https://gitter.im/ESP-Web-Console/Hall?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ESP Web Console is **simple**, **standalone**, **customizable web**, **realtime control/monitor** with WebSocket.
 
 In this demo we use **ESP-01S**, but the firmware of core can be use on ESP8266 series.

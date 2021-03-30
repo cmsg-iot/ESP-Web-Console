@@ -44,14 +44,14 @@ For other modules you can use the core and upload web files.
 
 ### firmware spec
 
-|        Firmware        |     Module      | Memory address |               Description                |
-| :--------------------: | :-------------: | :------------: | :--------------------------------------: |
-| [ESPWC_Main_Simple.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Main_Simple.bin?raw=true)  |     ESP-01S     |    0x00000     |        Simple Web UI + ESPWC_Main        |
-| [ESPWC_Main_Custom.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Main_Custom.bin?raw=true)  |     ESP-01S     |    0x00000     |        Custom Web UI +ESPWC_Main         |
+|                                                    Firmware                                                     |     Module      | Memory address |               Description                |
+| :-------------------------------------------------------------------------------------------------------------: | :-------------: | :------------: | :--------------------------------------: |
+|  [ESPWC_Main_Simple.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Main_Simple.bin?raw=true)  |     ESP-01S     |    0x00000     |        Simple Web UI + ESPWC_Main        |
+|  [ESPWC_Main_Custom.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Main_Custom.bin?raw=true)  |     ESP-01S     |    0x00000     |        Custom Web UI +ESPWC_Main         |
 | [ESPWC_Servo_Simple.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Servo_Simple.bin?raw=true) |     ESP-01S     |    0x00000     |       Simple Web UI + ESPWC_Servo        |
 | [ESPWC_Servo_Custom.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Servo_Custom.bin?raw=true) |     ESP-01S     |    0x00000     |        Custom Web UI +ESPWC_Servo        |
-| core / [ESPWC_Main.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/core/ESPWC_Main.bin?raw=true)  | ESP-01 ~ ESP-14 |    0x00000     |        Config for ESP8266, active        |
-| core / [ESPWC_Servo.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/core/ESPWC_Servo.bin?raw=true) | ESP-01 ~ ESP-14 |    0x00000     | Control Servomotors, basic on ESPWC_Main |
+|   core / [ESPWC_Main.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/core/ESPWC_Main.bin?raw=true)   | ESP-01 ~ ESP-14 |    0x00000     |        Config for ESP8266, active        |
+|  core / [ESPWC_Servo.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/core/ESPWC_Servo.bin?raw=true)  | ESP-01 ~ ESP-14 |    0x00000     | Control Servomotors, basic on ESPWC_Main |
 
 > Note: make sure of your Module's FS size are enough.
 
@@ -112,7 +112,7 @@ see [document](https://doc.sgiot.com.tw/webconsole/installation/upload-web)
 
 |             Description             |                  Command                  |
 | :---------------------------------: | :---------------------------------------: |
-|           self AP setting           |  @set SAP [**`SSID`**]:[**`PASSWORD`**]   | 
+|           self AP setting           |  @set SAP [**`SSID`**]:[**`PASSWORD`**]   |
 |              scan WiFi              |                 @AP scan                  |
 |            connect WiFi             | @AP connect [**`SSID`**]:[**`PASSWORD`**] |
 |    set TCP data receive address     |  @set recv IP:**`DOMAIN/IP`**:**`PORT`**  |
@@ -128,6 +128,30 @@ see [document](https://doc.sgiot.com.tw/webconsole/installation/upload-web)
 | set servo motor's angle | pose set **`Channel of PCA9685`**:**`Angle`** |
 
 > set multiple motors at the same time - pose set 1:90 2:90 3:90...
+
+## Data type(json)
+
+|  Data  |  Type  |                       Description                       |
+| :----: | :----: | :-----------------------------------------------------: |
+|  RSSI  | string |                WiFi signal from ESP8266                 |
+|  wifi  | string | connected wifi name, standalone is not connect any wifi |
+| device | string |    name for this ESP8266, can be setting by command     |
+|   LT   |  int   |                  Life time of ESP8266                   |
+|   tx   | string |               data send to ESP8266 by TX                |
+|  bps   |  int   |                     baud of ESP8266                     |
+
+```json
+{ "RSSI": "SAP mode  <211>", "wifi": "standalone" }
+```
+
+```json
+{
+  "device": "CMSGIOTDEVICE001",
+  "LT": 177,
+  "tx": " sv1:0.00 sv2:0.00 sv3:0.00 sv4:0.00 sv5:0.00 sv6:0.00 sv7:0.00 sv8:0.00 sv9:0.00 sv10:0.00 sv11:0.00 sv12:0.00 sv13:0.00 sv14:0.00 sv15:0.00 sv16:0.00\r\n",
+  "bps": 115200
+}
+```
 
 ## How to use?
 
@@ -174,7 +198,6 @@ See document in [here](https://doc.sgiot.com.tw/webconsole/manual/custom-usage-w
 ### servo motors control
 
 See document in [here](https://doc.sgiot.com.tw/webconsole/manual/custom-usage-servomotors)
-
 
 ## Used Modules
 

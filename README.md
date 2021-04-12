@@ -10,7 +10,7 @@ This firmware is mainly for someone who want to upgrade your device(Arduino) wit
 
 Make your own IoT project with Web App, and share your ideas to everyone on the gitter!
 
-<!-- [Quik Demo](https://youtube.com) -->
+[Demo Video](https://youtu.be/gDIvdp5f2U4)
 
 [More Documents on gitbook](https://doc.sgiot.com.tw)
 

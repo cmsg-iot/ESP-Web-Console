@@ -10,7 +10,7 @@ This firmware is mainly for someone who want to upgrade your device(Arduino) wit
 
 Make your own IoT project with Web App, and share your ideas to everyone on the gitter!
 
-[Demo Video](https://youtu.be/gDIvdp5f2U4)
+[Demo Video](https://youtube.com/playlist?list=PLAWpxGgnnFdqH9iN2gf-UTTJ0RJ1B8IpH)
 
 [More Documents on gitbook](https://doc.sgiot.com.tw)
 
@@ -44,21 +44,23 @@ For other modules you can use the core and upload web files.
 
 ### firmware spec
 
-|                                                                Firmware                                                                 |     Module      | Memory address |               Description                |
-| :-------------------------------------------------------------------------------------------------------------------------------------: | :-------------: | :------------: | :--------------------------------------: |
-|  [ESPWC_Main_Simple_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Main_Simple_1MB_FS192KB.bin?raw=true)  |     ESP-01S     |    0x00000     |        Simple Web UI + ESPWC_Main        |
-|  [ESPWC_Main_Custom_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Main_Custom_1MB_FS192KB.bin?raw=true)  |     ESP-01S     |    0x00000     |        Custom Web UI +ESPWC_Main         |
-| [ESPWC_Servo_Simple_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Servo_Simple_1MB_FS192KB.bin?raw=true) |     ESP-01S     |    0x00000     |       Simple Web UI + ESPWC_Servo        |
-| [ESPWC_Servo_Custom_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Servo_Custom_1MB_FS192KB.bin?raw=true) |     ESP-01S     |    0x00000     |        Custom Web UI +ESPWC_Servo        |
-|   core / [ESPWC_Main_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/core/ESPWC_Main_1MB_FS192KB.bin?raw=true)   | ESP-01 ~ ESP-14 |    0x00000     |        Config for ESP8266, active        |
-|  core / [ESPWC_Servo_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/core/ESPWC_Servo_1MB_FS192KB.bin?raw=true)  | ESP-01 ~ ESP-14 |    0x00000     | Control Servomotors, basic on ESPWC_Main |
+|                                                                    Firmware                                                                     |     Module      | Memory address |               Description               |
+| :---------------------------------------------------------------------------------------------------------------------------------------------: | :-------------: | :------------: | :-------------------------------------: |
+|      [ESPWC_Main_Simple_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Main_Simple_1MB_FS192KB.bin?raw=true)      |     ESP-01S     |    0x00000     |       Simple Web UI + ESPWC_Main        |
+|      [ESPWC_Main_Custom_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Main_Custom_1MB_FS192KB.bin?raw=true)      |     ESP-01S     |    0x00000     |        Custom Web UI +ESPWC_Main        |
+|     [ESPWC_Servo_Simple_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Servo_Simple_1MB_FS192KB.bin?raw=true)     |     ESP-01S     |    0x00000     |       Simple Web UI + ESPWC_Servo       |
+|     [ESPWC_Servo_Custom_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_Servo_Custom_1MB_FS192KB.bin?raw=true)     |     ESP-01S     |    0x00000     |       Custom Web UI +ESPWC_Servo        |
+| [ESPWC_ModbusRTU_Custom_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/ESPWC_ModbusRTU_Custom_1MB_FS192KB.bin?raw=true) |     ESP-01S     |    0x00000     |     Custom Web UI +ESPWC_ModbusRTU      |
+|       core / [ESPWC_Main_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/core/ESPWC_Main_1MB_FS192KB.bin?raw=true)       | ESP-01 ~ ESP-14 |    0x00000     |             Basic features              |
+|      core / [ESPWC_Servo_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/core/ESPWC_Servo_1MB_FS192KB.bin?raw=true)      | ESP-01 ~ ESP-14 |    0x00000     | Control Servomotors, base on ESPWC_Main |
+|  core / [ESPWC_ModbusRTU_1MB_FS192KB.bin](https://github.com/cmsg-iot/ESP-Web-Console/blob/main/core/ESPWC_ModbusRTU_1MB_FS192KB.bin?raw=true)  | ESP-01 ~ ESP-14 |    0x00000     |       Support Modbus RTU protocol       |
 
 > Note: make sure of your Module's FS size are enough.
 
 - Connect ESP8266 to computer.([Connection Diagram from google](https://www.allaboutcircuits.com/uploads/articles/ESP-01_Connection_Diagram.PNG))
 - Open Arduino IDE, go to **Tools > Port** check the serial port of ESP8266.
 - Use [esptools.py](https://github.com/espressif/esptool) to burn.
-  > Default SSID:PASSWORD is WEBCOM:12345678
+  > Default SSID:PASSWORD is WEBCOM:12345678 (ESPWC_ModbusRTU SSID: Modbusx)
 
 ### Initial
 
@@ -69,7 +71,7 @@ esptools.py --port <Serial Port> erase_flash
 ### Basic(For ESP-01S)
 
 ```bash
-esptools.py --port <Serial Port> write_flash 0x0 ESPWC_Main_Simple.bin
+esptools.py --port <Serial Port> write_flash 0x0 ESPWC_Main_Simple_1MB_FS192KB.bin
 ```
 
 ---
@@ -77,10 +79,10 @@ esptools.py --port <Serial Port> write_flash 0x0 ESPWC_Main_Simple.bin
 ### Core
 
 ```bash
-esptools.py --port <Serial Port> write_flash 0x00000 ESPWC_Main.bin
+esptools.py --port <Serial Port> write_flash 0x0 ESPWC_Main_1MB_FS192KB.bin
 ```
 
-### Web
+### Upload Web
 
 see [document](https://doc.sgiot.com.tw/webconsole/installation/upload-web)
 
@@ -128,6 +130,16 @@ see [document](https://doc.sgiot.com.tw/webconsole/installation/upload-web)
 | set servo motor's angle | pose set **`Channel of PCA9685`**:**`Angle`** |
 
 > set multiple motors at the same time - pose set 1:90 2:90 3:90...
+
+### ModbusRTU
+
+|           Description            |                               Command                                |
+| :------------------------------: | :------------------------------------------------------------------: |
+|          set device ID           |                       @set Device ID: **`ID`**                       |
+|         set Modbus baud          |                          SS bps: **`baud`**                          |
+|     send data by Modbus RTU      | modbus send [**`station`** **`function`** **`register`** **`data`**] |
+| read data from Modbus RTU device |    modbus read dev:**`station`** reg:**`register`** len:**`len`**    |
+| write data to Modbus RTU device  |  modbus write dev:**`station`** reg:**`register`** data:**`data`**   |
 
 ## Data type(json)
 
@@ -244,7 +256,7 @@ See document in [here](https://doc.sgiot.com.tw/webconsole/manual/custom-usage-w
 
 ## Contact us
 
-if you have any questions or requirements, welcom to send us a mail !
+If you have any questions or requirements, welcom to send us a mail !
 
 [service@sgiot.com.tw](mailto:service@sgiot.com.tw)
 
